@@ -21,18 +21,20 @@ class _ProfilePageState extends State<ProfilePage> {
               width: 200,
               height: 200,
               child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      qrCode = !qrCode;
-                    });
-                  },
-                  child: qrCode
-                      ? CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://th.bing.com/th/id/R.ca633eeeb296860d252adaf3b5fb5dd3?rik=XpdT9nUiNjVKHw&pid=ImgRaw&r=0"))
-                      : CircleAvatar(
-                          backgroundImage: AssetImage("assets/code.png"),
-                        )),
+                onTap: () {
+                  setState(() {
+                    qrCode = !qrCode;
+                  });
+                },
+                child: qrCode
+                    ? CircleAvatar(
+                        backgroundImage: AssetImage("assets/code.png"),
+                      )
+                    : CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://th.bing.com/th/id/R.ca633eeeb296860d252adaf3b5fb5dd3?rik=XpdT9nUiNjVKHw&pid=ImgRaw&r=0"),
+                      ),
+              ),
             ), //Serene Yew lol
           ),
         ),
