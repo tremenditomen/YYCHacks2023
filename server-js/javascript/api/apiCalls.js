@@ -10,4 +10,4 @@ axios({
   })
     .then((res) => {
         dataFormatter(res.data)
-    })
+    })    
