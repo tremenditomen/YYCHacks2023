@@ -49,8 +49,8 @@ class _RootState extends State<Root> {
 
   List<Widget> _pages = <Widget>[
     const HomePage(),
-    const ProfilePage(),
     const PassportPage(),
+    const ProfilePage(),
   ];
 
   void onSelectPage(int index) {
@@ -75,13 +75,13 @@ class _RootState extends State<Root> {
             label: "Home",
           ),
           NavigationDestination(
+            icon: Icon(Icons.badge_outlined),
+            label: "Passport",
+          ),
+          NavigationDestination(
             icon: Icon(Icons.person),
             label: "Profile",
           ),
-          NavigationDestination(
-            icon: Icon(Icons.qr_code_scanner),
-            label: "Passport",
-          )
         ],
         onDestinationSelected: onSelectPage,
       ),
