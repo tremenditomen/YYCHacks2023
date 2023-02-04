@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:snow_rewards/color_schemes.g.dart';
+import 'package:snow_rewards/home_page.dart';
+import 'package:snow_rewards/passport_page.dart';
+import 'package:snow_rewards/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,117 +27,63 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: darkColorScheme,
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(
+      home: Root(
         key: super.key,
       ),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Root extends StatefulWidget {
+  const Root({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Root> createState() => _RootState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RootState extends State<Root> {
+  int _currentPage = 0;
+
+  List<Widget> _pages = <Widget>[
+    const HomePage(),
+    const ProfilePage(),
+    const PassportPage(),
+  ];
+
+  void onSelectPage(int index) {
+    setState(() {
+      _currentPage = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Snow Rewards"),
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Trending",
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Container(
-            height: 180,
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              children: [
-                Card(
-                  child: SizedBox(
-                      width: 200, child: Text("These are seperate objects")),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 200,
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 200,
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 200,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Nearby",
-              style: TextStyle(fontSize: 30),
-            ),
-          ),
-          Container(
-            height: 180,
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              children: [
-                Card(
-                  child: SizedBox(
-                    width: 200,
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 200,
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 200,
-                  ),
-                ),
-                Card(
-                  child: SizedBox(
-                    width: 200,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+      body: _pages.elementAt(_currentPage),
+      bottomNavigationBar: NavigationBar(
         //TODO: Link these to the actual pages
-        items: const [
-          BottomNavigationBarItem(
+        selectedIndex: _currentPage,
+        destinations: const [
+          NavigationDestination(
             icon: Icon(Icons.home),
             label: "Home",
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.person),
             label: "Profile",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.qr_code_scanner),
+            label: "Passport",
           )
         ],
+        onDestinationSelected: onSelectPage,
       ),
     );
   }
