@@ -31,11 +31,21 @@ class _HomePageState extends State<HomePage> {
           },
         ),
         SlidingUpPanel(
-          color: Colors.red,
+          color: Colors.red[800]!,
           panel: Padding(
-            padding: const EdgeInsets.only(top: 60.0),
+            padding: const EdgeInsets.only(top: 50.0),
             child: Container(
-              child: ListView(children: []),
+              child: ListView(children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    surfaceTintColor: Colors.white,
+                    child: SizedBox(
+                      height: 125,
+                    ),
+                  ),
+                )
+              ]),
             ),
           ),
         )
