@@ -1,63 +1,63 @@
-export const dataFormatter = (data)=>{
-    let formatedData = {}
-    data.map((info)=>{
-                formatedData = {title : info["title"],
-                                adress: info["address"],
-                                host:info["host_organization"],
-                                event_type: info["event_type"],
-                                notes:info["notes"],
-                                all_dates:info["all_dates"],
-                                more_info_url:info["more_info_url"],
-                                latitude :info["latitude"],
-                                longitude: info["longitude"],
-                                }
-    })
-    // console.log(formatedData);
-}
- export const farmFoodFormatter = (data) => {
-    let farmStandFormatted = {};
-    data.map((info) => {
-      farmStandFormatted = {
-        vendor_name: info["vendor_name"],
-        vendor_description: info["vendor_description"],
-        product_description: info["product_description"],
-        community: info["community"],
-        location: info["location_name"],
-        address: info["address"],
-        sector: info["sector"],
-        hours: info["hours"],
-        duration: info["duration"],
-        latitude: info["point"]["coordinates"][0],
-        longitude: info["point"]["coordinates"][1],
-      };
-  
-    });
-  
-  };
-  export const servicesFormatter = (res) => {
-    let formattedData = {};
-    let foodInc = []
+export const farmFoodFormatter = (data) => {
+  let farmStandFormatted = {};
+  data.map((info) => {
+    farmStandFormatted = {
+      vendor_name: info["vendor_name"],
+      vendor_description: info["vendor_description"],
+      product_description: info["product_description"],
+      community: info["community"],
+      location: info["location_name"],
+      address: info["address"],
+      sector: info["sector"],
+      hours: info["hours"],
+      duration: info["duration"],
+      latitude: info["point"]["coordinates"][0],
+      longitude: info["point"]["coordinates"][1],
+    };
+  });
+};
 
-    res.map((info) => {
-      if (
-        info["licencetypes"] === "FOOD SERVICE - PREMISES (SEATING)" ||
-        info["licencetypes"] === "FOOD SERVICE - PREMISES (NO SEATING)"
-      ) {
-        formattedData = {
-          name: info["tradename"],
-          address: info["address"],
-          licentype: info["licencetypes"],
-          latitude: info["latitude"],
-          longitude: info["longitude"],
-          community: info["comdistnm"]
-        };
-      }
-      foodInc.push(formattedData)
-      const filterd = new Set([... foodInc])
-      for (const item of filterd){
-        // console.log("item~!!!!!",item);
-      }
-     
-      
-    });
-  };
+export const yelpApi = (response) => {
+  let formatedData = {};
+  let arr = [];
+
+  response.data.businesses.map((info) => {
+    //eviews 3 or 3.5 and review count less than 200
+    //   console.log(info);
+
+    if (parseInt(info["rating"])>=4) {
+      formatedData = {
+        name: info["name"],
+        img_url: info["image_url"],
+        url: info["url"],
+        rating: info["rating"],
+        review_count: info["review_count"],
+        address: info["location"]["address1"],
+        longitude: info["coordinates"]["longitude"],
+        latitude: info["coordinates"]["latitude"],
+        phone_number: info["phone"],
+      };
+      arr.push(formatedData);
+      arr.map((item) => {});
+    //   console.log("INSIDE INFO:~",info);
+    }
+    // console.log("YELP ARRAYS", );
+  });
+};
+
+// export const improvmentAreas = (res) => {
+//   let formatedData = {};
+//   let Arr = [];
+
+//   res.data.map((info) => {
+//     formatedData = {
+//       name: info["brz_name"],
+//     };
+//     // console.log("HERE!!!",formatedData);
+//     // console.log(info);
+//     // console.log(info["multipolygon"]["coordinates"].map((item)=>{
+
+//     //     console.log("WOOOOOOOOOOOO",item);
+//     // }));
+//   });
+// };
