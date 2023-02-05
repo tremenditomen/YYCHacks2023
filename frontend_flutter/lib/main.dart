@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:snow_rewards/color_schemes.g.dart';
-import 'package:snow_rewards/home_page.dart';
-import 'package:snow_rewards/passport_page.dart';
-import 'package:snow_rewards/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,62 +23,117 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         useMaterial3: true,
-        colorScheme: lightColorScheme,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         primarySwatch: Colors.blue,
       ),
-      home: Root(
+      home: HomePage(
         key: super.key,
       ),
     );
   }
 }
 
-class Root extends StatefulWidget {
-  const Root({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Root> createState() => _RootState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _RootState extends State<Root> {
-  int _currentPage = 0;
-
-  final List<Widget> _pages = <Widget>[
-    const HomePage(),
-    const PassportPage(),
-    const ProfilePage(),
-  ];
-
-  void onSelectPage(int index) {
-    setState(() {
-      _currentPage = index;
-    });
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Snow Rewards"),
       ),
-      body: _pages.elementAt(_currentPage),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentPage,
-        destinations: const [
-          NavigationDestination(
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Trending",
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
+          Container(
+            height: 180,
+            child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              children: [
+                Card(
+                  child: SizedBox(
+                      width: 200, child: Text("These are seperate objects")),
+                ),
+                Card(
+                  child: SizedBox(
+                    width: 200,
+                  ),
+                ),
+                Card(
+                  child: SizedBox(
+                    width: 200,
+                  ),
+                ),
+                Card(
+                  child: SizedBox(
+                    width: 200,
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Nearby",
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
+          Container(
+            height: 180,
+            child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              children: [
+                Card(
+                  child: SizedBox(
+                    width: 200,
+                  ),
+                ),
+                Card(
+                  child: SizedBox(
+                    width: 200,
+                  ),
+                ),
+                Card(
+                  child: SizedBox(
+                    width: 200,
+                  ),
+                ),
+                Card(
+                  child: SizedBox(
+                    width: 200,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        //TODO: Link these to the actual pages
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
           ),
-          NavigationDestination(
-            icon: Icon(Icons.badge_outlined),
-            label: "Passport",
-          ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "Profile",
-          ),
+          )
         ],
-        onDestinationSelected: onSelectPage,
       ),
     );
   }

@@ -1,9 +1,0 @@
-flutter_native_splash:
-  image: "assets/calgary_coatofarms.png"
-  fullscreen: true
-  color: "#FF5733"
-  android_12: 
-    image: "assets/calgary_coatofarms.png"
-  android_13: 
-    image: "assets/calgary_coatofarms.png"
-    android: true
