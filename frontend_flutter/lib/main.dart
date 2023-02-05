@@ -47,7 +47,7 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
   int _currentPage = 0;
 
-  List<Widget> _pages = <Widget>[
+  final List<Widget> _pages = <Widget>[
     const HomePage(),
     const PassportPage(),
     const ProfilePage(),
@@ -67,7 +67,6 @@ class _RootState extends State<Root> {
       ),
       body: _pages.elementAt(_currentPage),
       bottomNavigationBar: NavigationBar(
-        //TODO: Link these to the actual pages
         selectedIndex: _currentPage,
         destinations: const [
           NavigationDestination(

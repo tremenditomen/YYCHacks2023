@@ -34,19 +34,17 @@ class _HomePageState extends State<HomePage> {
           color: Colors.red[800]!,
           panel: Padding(
             padding: const EdgeInsets.only(top: 50.0),
-            child: Container(
-              child: ListView(children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Card(
-                    surfaceTintColor: Colors.white,
-                    child: SizedBox(
-                      height: 125,
-                    ),
+            child: ListView(children: const [
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Card(
+                  surfaceTintColor: Colors.white,
+                  child: SizedBox(
+                    height: 125,
                   ),
-                )
-              ]),
-            ),
+                ),
+              )
+            ]),
           ),
         )
       ],

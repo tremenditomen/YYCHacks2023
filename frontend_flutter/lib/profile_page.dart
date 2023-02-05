@@ -27,19 +27,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   });
                 },
                 child: qrCode
-                    ? CircleAvatar(
+                    ? const CircleAvatar(
                         backgroundImage: AssetImage("assets/code.png"),
                       )
-                    : CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://th.bing.com/th/id/R.ca633eeeb296860d252adaf3b5fb5dd3?rik=XpdT9nUiNjVKHw&pid=ImgRaw&r=0"),
+                    : const CircleAvatar(
+                        backgroundImage: AssetImage("assets/serene.gif"),
                       ),
               ),
             ), //Serene Yew lol
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0),
+        const Padding(
+          padding: EdgeInsets.only(top: 20.0),
           child: Text(
             "Serene Yew",
             style: TextStyle(fontSize: 20),
@@ -48,33 +47,33 @@ class _ProfilePageState extends State<ProfilePage> {
         Padding(
           padding: const EdgeInsets.only(left: 32.5),
           child: Row(
-            children: [
+            children: const [
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Image(
                   image: AssetImage("assets/first.png"),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Image(
                   image: AssetImage("assets/second.png"),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Image(
                   image: AssetImage("assets/third.png"),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Image(
                   image: AssetImage("assets/fourth.png"),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Image(
                   image: AssetImage("assets/fifth.png"),
                 ),
@@ -82,16 +81,16 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
-        Container(
+        SizedBox(
           height: 300,
           child: ListView(
             children: [
-              Text("Exclusive Offers"),
-              Container(
+              const Text("Exclusive Offers"),
+              SizedBox(
                 height: 180,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: [
+                  children: const [
                     Card(
                       child: SizedBox(
                         width: 200,
@@ -119,12 +118,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
-              Text("Saved Places"),
-              Container(
+              const Text("Saved Places"),
+              SizedBox(
                 height: 180,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: [
+                  children: const [
                     Card(
                       child: SizedBox(
                         width: 200,
