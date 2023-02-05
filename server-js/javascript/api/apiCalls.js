@@ -63,7 +63,7 @@ axios(
 
 
   axios({
-    methode: "get",
+    method: "get",
     url: "https://data.calgary.ca/resource/2kp2-hsy7.json",
   }).then((res) => {
     artFormatter(res);
