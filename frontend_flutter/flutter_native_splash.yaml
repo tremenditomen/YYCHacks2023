@@ -1,0 +1,14 @@
+flutter_native_splash:
+  image: "assets/Exploring-pana.png"
+  fullscreen: true
+  color: "#FF5733"
+  android_12: 
+    image: "assets/Exploring-pana.png"
+  android_13: 
+    image: "assets/Exploring-pana.png"
+    android: true
+
+
+
+  
+  
