@@ -111,3 +111,32 @@ export const museum  =  (response) => {
   return museum;
   //   console.log("HERE",arr);
 };
+export const artFormatter = (response)=>{
+let formatedData = {}
+let arr = []
+
+// console.log("AAAAA",response.data);
+response.data.map((info)=>{
+
+console.log("INFO",info);
+
+formatedData ={
+    artist: info["artist"],
+    title : info["title"],
+    address: info["address"],
+    website: info["website"]["url"],
+    description1 : info["short_desc"],
+    description2 : info["desc1"],
+    latitude: info["point"]["coordinates"][0],
+    longitude : info["point"]["coordinates"][1]
+
+}
+
+// console.log("ARR",info);
+arr.push(formatedData)
+})
+
+return arr
+
+
+}
