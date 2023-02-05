@@ -39,8 +39,9 @@ export const yelpApi = (response) => {
       arr.push(formatedData);
       arr.map((item) => {});
     }
-    // console.log("YELP ARRAYS",arr );
+    
   });
+  return arr;
 };
 
 export const skating = (response) => {
@@ -90,7 +91,7 @@ export const skiingHelper = (response) => {
   });
   //   console.log("ARRRRR",arr);
 };
-export const museum = (response) => {
+export const museum  =  (response) => {
   let formatedData = {};
   let arr = [];
   response.data.businesses.map((info) => {
@@ -107,5 +108,6 @@ export const museum = (response) => {
     };
     arr.push(formatedData);
   });
+  return museum;
   //   console.log("HERE",arr);
 };
