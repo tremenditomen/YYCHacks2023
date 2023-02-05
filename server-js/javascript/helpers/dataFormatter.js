@@ -23,9 +23,8 @@ export const yelpApi = (response) => {
 
   response.data.businesses.map((info) => {
     //eviews 3 or 3.5 and review count less than 200
-    //   console.log(info);
 
-    if (parseInt(info["rating"])>=4) {
+    if (parseInt(info["rating"]) >= 4) {
       formatedData = {
         name: info["name"],
         img_url: info["image_url"],
@@ -39,25 +38,74 @@ export const yelpApi = (response) => {
       };
       arr.push(formatedData);
       arr.map((item) => {});
-    //   console.log("INSIDE INFO:~",info);
     }
-    // console.log("YELP ARRAYS", );
+    // console.log("YELP ARRAYS",arr );
   });
 };
 
-// export const improvmentAreas = (res) => {
-//   let formatedData = {};
-//   let Arr = [];
+export const skating = (response) => {
+  let formatedData = {};
+  let arr = [];
 
-//   res.data.map((info) => {
-//     formatedData = {
-//       name: info["brz_name"],
-//     };
-//     // console.log("HERE!!!",formatedData);
-//     // console.log(info);
-//     // console.log(info["multipolygon"]["coordinates"].map((item)=>{
+  response.data.businesses.map((info) => {
+    info.categories.map((i) => {
+      if (i["title"].includes("Rinks") || i["title"].includes("Arenas"))
+        formatedData = {
+          name: info["name"],
+          image: info["image_url"],
+          address: info["location"]["address1"],
+          rating: info["rating"],
+          view: info["review_count"],
+          latitude: info["coordinates"]["latitude"],
+          longitude: info["coordinates"]["longitude"],
+          url: info["url"],
+        };
+    });
+    arr.push(formatedData);
+  });
 
-//     //     console.log("WOOOOOOOOOOOO",item);
-//     // }));
-//   });
-// };
+  // console.log("in arr", arr);
+};
+export const skiingHelper = (response) => {
+  let formatedData = {};
+  let arr = [];
+  response.data.businesses.map((info) => {
+    info["categories"].map((i) => {
+      if (i["title"].includes("Resorts") || i["title"].includes("Schools")) {
+        formatedData = {
+          name: info["name"],
+          image: info["image_url"],
+          address: info["location"]["address1"],
+          rating: info["rating"],
+          view: info["review_count"],
+          latitude: info["coordinates"]["latitude"],
+          longitude: info["coordinates"]["longitude"],
+          url: info["url"],
+          phone_number: info["phone"],
+        };
+      }
+
+      arr.push(formatedData);
+    });
+  });
+  //   console.log("ARRRRR",arr);
+};
+export const museum = (response) => {
+  let formatedData = {};
+  let arr = [];
+  response.data.businesses.map((info) => {
+    formatedData = {
+      name: info["name"],
+      image: info["image_url"],
+      address: info["location"]["address1"],
+      rating: info["rating"],
+      view: info["review_count"],
+      latitude: info["coordinates"]["latitude"],
+      longitude: info["coordinates"]["longitude"],
+      url: info["url"],
+      phone_number: info["phone"],
+    };
+    arr.push(formatedData);
+  });
+  //   console.log("HERE",arr);
+};
