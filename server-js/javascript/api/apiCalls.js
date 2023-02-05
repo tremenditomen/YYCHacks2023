@@ -6,7 +6,6 @@ import {
   skating,
   skiingHelper,
   museum,
-  artFormatter
 } from "../helpers/dataFormatter.js";
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -60,11 +59,3 @@ axios(
     museum(response);
   })
   .catch((err) => console.error(err));
-
-
-  axios({
-    method: "get",
-    url: "https://data.calgary.ca/resource/2kp2-hsy7.json",
-  }).then((res) => {
-    artFormatter(res);
-  });
