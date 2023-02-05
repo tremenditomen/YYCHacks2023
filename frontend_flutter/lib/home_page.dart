@@ -51,8 +51,10 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  int i = 9;
+
   static const CameraPosition _initalCalgary = CameraPosition(
-      target: LatLng(51.02323469598919, -114.06727911115647), zoom: 10);
+      target: LatLng(51.02323469598919, -114.06727911115647), zoom: 12.5);
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         body: Stack(
       children: [
         GoogleMap(
-          mapType: MapType.hybrid,
+          mapType: MapType.normal,
           initialCameraPosition: _initalCalgary,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
@@ -121,6 +123,16 @@ class _HomePageState extends State<HomePage> {
                                         Text(
                                           e["phone_number"],
                                           textAlign: TextAlign.left,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 8.0),
+                                          child: Text(
+                                            "${e["rating"]} Stars on Yelp",
+                                            textAlign: TextAlign.left,
+                                            style:
+                                                const TextStyle(fontSize: 16),
+                                          ),
                                         )
                                       ],
                                     )
